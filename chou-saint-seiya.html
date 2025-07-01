@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Only Chou Saint Seiya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+    }
+
+    @keyframes slide {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .banner-container {
+      width: 100%;
+      background-color: #1E90FF;
+      height: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moving-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      top: 10px;
+      left: 0;
+      animation: slide 12s linear infinite alternate;
+    }
+
+    .header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 15px 5px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background-color: #333;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .search-container {
+      text-align: center;
+      padding: 10px 0 5px;
+      font-style: italic;
+      color: red;
+    }
+
+    .download-btn {
+      border: 1.5px solid #1E90FF;
+      color: #1E90FF;
+      padding: 6px 18px;
+      border-radius: 25px;
+      font-weight: 500;
+      text-decoration: none;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background-color: #1E90FF;
+      color: white;
+    }
+
+    footer {
+      background-color: white;
+      padding: 30px 20px 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    footer a {
+      color: black !important;
+      text-decoration: none;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .footer-logo span {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .footer-copy {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<div class="banner-container">
+  <div class="moving-text">SELAMAT DATANG!</div>
+</div>
+
+<div class="header">
+  <div class="header-top">
+    <div style="display: flex; align-items: center;">
+      <div class="logo">
+        <img src="https://i.imgur.com/2yaf2wb.png" alt="Logo">
+      </div>
+      <div class="title">Schwanz <span style="color:#1E90FF">ML</span></div>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="search-container">
+    <em>🔍 searching skin di halaman home.</em>
+  </div>
+  <div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="category.html">Category</a>
+    <a href="social.html">Social</a>
+  </div>
+</div>
+<!-- Konten Utama -->
+<div style="border: 1px solid #000; padding: 20px; margin: 20px; text-align: center; border-radius: 10px;">
+  <div style="font-weight: bold; font-size: 18px;">Chou Saint Seiya</div>
+  <div style="color: #000; font-size: 14px;">(download disini)</div>
+  <div style="margin-top: 10px; border-bottom: 1px solid #000; display: inline-block; font-weight: bold;">Short Story</div>
+  <div style="margin-top: 10px; font-size: 14px; line-height: 1.6;">
+    Chou is a gifted martial artist born in the slums. He learned the ancient oriental martial arts under the tutelage of a mysterious monk. He is agile and skilled in the use of the nunchaku.
+  </div>
+<!-- 🔽 Embed YouTube (kecil dan pas di dalam blok) -->
+<div style="margin-top: 20px; text-align: center; font-style: italic; color: red;">
+  Video preview ada di YouTube.
+</div>
+</div>
+<!-- Featured, Support Voice & Kelebihan Lainnya -->
+<div style="margin-top: 30px; padding: 0 15px;">
+  <!-- Judul Featured di Tengah -->
+  <div style="text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 15px;">
+    Featured
+  </div>
+
+<!-- Baris Support Voice dan Kelebihan Lainnya -->
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 15px;">
+  <!-- Support Voice -->
+ <div style="flex: 1 1 45%; font-size: 11px; padding-left: 20px;">
+    <div style="font-weight: bold; margin-bottom: 5px;">Support Voice</div>
+    <ul style="list-style-type: disc; padding-left: 18px; margin-top: 5px;">
+      <li>Indonesia</li>
+      <li>English</li>
+      <li>English PH</li>
+      <li>Japan</li>
+      <li>Arabic</li>
+      <li>Espanol</li>
+      <li>Portuguse</li>
+      <li>Rusia</li>
+      <li>Turkie</li>
+    </ul>
+  </div>
+
+  <!-- Kelebihan Lainnya -->
+<div style="flex: 1 1 45%; font-size: 11px;">
+    <div style="font-weight: bold; margin-bottom: 5px;">Kelebihan Lainnya</div>
+    <ul style="list-style-type: disc; padding-left: 18px; margin-top: 5px;">
+      <li>Support untuk grafik low</li>
+      <li>Head Icon</li>
+      <li>Skill Icon</li>
+      <li>Share Background</li>
+      <li>File sudah dikompres</li>
+      <li>Audio Replay</li>
+      <li>Work Classic & Rank</li>
+      <li>No Bug</li>
+    </ul>
+  </div>
+<div style="border: 1px solid red; color: red; font-style: italic; padding: 8px 12px; margin: 20px; border-radius: 8px; font-size: 13px;">
+  Jika ada kerusakan/bug seperti tidak ada suara, tidak ada efek skill dan lain lain, silahkan lapor ke admin disini.
+</div>
+<!-- Judul dan update benar-benar center -->
+<div style="max-width: 650px; margin: 50px auto; font-family: 'Inter', sans-serif;">
+
+  <!-- Judul Tengah -->
+<div style="max-width: 600px; margin: 40px auto; font-family: 'Inter', sans-serif;">
+  <!-- Judul -->
+  <div style="text-align: center; font-weight: 600; font-size: 18px; margin-bottom: 5px;">
+    Tabel List Chou Saint Seiya
+  </div>
+  <!-- Tanggal Update -->
+  <div style="text-align: center; font-size: 13px; color: #555; margin-bottom: 25px;">
+    Last Updated <u>2025-06-27</u>
+  </div>
+
+  <!-- Tabel -->
+ </div>  <div style="max-width: 900px; margin: 40px auto; font-family: 'Inter', sans-serif; padding: 0 20px;">
+    
+     
+    </div>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; max-width: 800px; margin: 0 auto; border-collapse: collapse; font-size: 15px;">
+        <thead>
+          <tr style="background-color: #f2f2f2;">
+            <th style="text-align: left; padding: 14px 20px; border-top-left-radius: 12px;">Replace</th>
+            <th style="text-align: center; padding: 14px 20px; border-top-right-radius: 12px;">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Default</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Basic</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Epic</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Elite</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Special</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">KOF</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Starlight</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+           <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Starlight</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+           <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Dawning</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Dragon Shiryu</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 16px 20px;">Echo</td>
+            <td style="text-align: center;"><a href="#" target="_blank" class="download-btn">✔ Download</a></td>
+          </tr>
+       
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top: 15px; font-size: 12px; font-style: italic; color: #333; text-align: left;">
+      🗣️ Pilih sesuai dengan yang dibutuhkan.<br>
+      ❌ Jika download malah balik kesini, berarti filenya belum ada.
+    </div>
+  </div>  
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://i.imgur.com/2yaf2wb.png" alt="Logo">
+    <span>Schwanz <span class="ml-blue">ML</span></span>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+    <div><a href="index.html">Home</a></div>
+    <div><a href="category.html">Category</a></div>
+    <div><a href="https://youtu.be/dQw4w9WgXcQ?si=-ioxpiJ4S2o21HjU">Diamond Gratis</a></div>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+    <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+    <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+    <div><a href="hayabusa-kakashi.html">Hayabusa X Kakashi</a></div>
+    <div><a href="selena-zenith.html">Selena Zenith</a></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+    <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" style="width: 30px; height: 30px; margin-right: 8px;">
+      <span>Saweria</span>
+    </a>
+    <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+      <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" style="width: 30px; height: 30px; margin-right: 8px;">
+      <span>Tako ID</span>
+    </a>
+  </div>
+  <div class="footer-copy">
+    Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(hamburger) {
+    const menu = document.getElementById('menu');
+    hamburger.classList.toggle('active');
+
+    if (!menu.classList.contains('show')) {
+      menu.style.display = 'block';
+      setTimeout(() => menu.classList.add('show'), 10);
+    } else {
+      menu.classList.remove('show');
+      hamburger.classList.remove('active');
+      setTimeout(() => menu.style.display = 'none', 300);
+    }
+  }
+
+  document.addEventListener('click', function (event) {
+    const menu = document.getElementById('menu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        hamburger.classList.remove('active');
+        setTimeout(() => menu.style.display = 'none', 300);
+      }
+    }
+  });
+</script>
+</body>
+</html>

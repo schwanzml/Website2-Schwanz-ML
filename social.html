@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schwanz ML - Social</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    /* Banner */
+    .banner-container {
+      width: 100%;
+      background-color: #1E90FF;
+      height: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moving-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      top: 10px;
+      animation: slide 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes slide {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Header */
+    .header-block {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+    }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .site-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .ml-blue {
+      color: #1E90FF;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background-color: #333;
+      border-radius: 1px;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Social Block */
+    .social-section {
+      margin: 20px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .social-header {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .social-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      max-width: 200px;
+      padding: 20px 10px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: normal;
+      color: black;
+      -webkit-text-stroke: 0.5px black;
+      background-color: #fff;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .social-card:hover {
+      transform: scale(1.03);
+      background-color: #f3f3f3;
+    }
+
+    .social-card img {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 30px 20px 10px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+
+    footer .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    footer .footer-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    footer .footer-logo span {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    footer .footer-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-copy {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner-container">
+    <div class="moving-text">SELAMAT DATANG!</div>
+  </div>
+
+  <!-- Header -->
+  <div class="header-block">
+    <div class="header">
+      <div class="left-section">
+        <div class="logo">
+          <img src="https://i.ibb.co/HTnQpsS7/fd185ef629c9cf997c4a855952139eb2.jpg" alt="Logo">
+        </div>
+        <div class="site-title">Schwanz <span class="ml-blue">ML</span></div>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="category.html">Category</a>
+    <a href="social.html">Social</a>
+  </div>
+
+  <!-- Social Section -->
+  <div class="social-section">
+    <div class="social-header">Follow & Support</div>
+    <div class="social-list">
+      <a href="https://youtube.com/@SchwanzML" target="_blank" class="social-card">
+        <img src="https://i.ibb.co/Y4vHY7ch/images-2-removebg-preview.png" alt="YouTube">
+        <div>YouTube Channel</div>
+      </a>
+      <a href="https://youtu.be/dQw4w9WgXcQ?si=-ioxpiJ4S2o21HjU" target="_blank" class="social-card">
+        <img src="https://i.ibb.co/hRCD6MV4/Diamond.png" alt="Diamond Grati">
+        <div>Diamond Gratis</div>
+      </a>
+      <a href="https://saweria.co/SchwanzSigma" target="_blank" class="social-card">
+        <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria">
+        <div>Support via Saweria</div>
+      </a>
+      <a href="https://tako.id/SchwanzML" target="_blank" class="social-card">
+        <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID">
+        <div>Tako ID</div>
+      </a>
+    </div>
+  </div>
+
+ <!-- Footer -->
+<footer>
+  <!-- Logo -->
+  <div class="footer-logo">
+    <img src="https://i.ibb.co/HTnQpsS7/fd185ef629c9cf997c4a855952139eb2.jpg" alt="Logo">
+    <span>Schwanz <span class="ml-blue">ML</span></span>
+  </div>
+
+  <!-- Quick Link -->
+  <div style="margin-bottom: 20px;">
+    <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+    <div><a href="index.html">Home</a></div>
+    <div><a href="category.html">Category</a></div>
+    <div><a href="social.html">Social</a></div>
+  </div>
+
+  <!-- Populer -->
+  <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+      <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+      <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+      <div><a href="hayabusa-kakashi.html">Hayabua X Kakashi</a></div>
+      <div><a href="selena-zenith.html">Selena Zenith</a></div>
+  </div>
+
+  <!-- Support -->
+  <div style="margin-bottom: 10px;">
+    <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+    <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px; text-decoration: none; color: inherit;">
+      <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria" style="width: 30px; height: 30px; margin-right: 8px;">
+      <span>Saweria</span>
+    </a>
+    <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit; margin-left: 0; margin-bottom: 5px;">
+      <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID" style="width: 30px; height: 30px; margin-right: 8px;">
+      <span>Tako ID</span>
+    </a>
+  </div>
+
+  <!-- Garis + Copyright -->
+  <div class="footer-copy">
+    Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.
+  </div>
+</footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (!menu.classList.contains('show')) {
+        menu.style.display = 'block';
+        setTimeout(() => menu.classList.add('show'), 10);
+      } else {
+        menu.classList.remove('show');
+        setTimeout(() => menu.style.display = 'none', 300);
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+        if (menu.classList.contains('show')) {
+          menu.classList.remove('show');
+          setTimeout(() => menu.style.display = 'none', 300);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

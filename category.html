@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schwanz ML - Kategori Skin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .banner-container {
+      width: 100%;
+      background-color: #1E90FF;
+      height: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moving-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      top: 10px;
+      animation: slide 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes slide {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .header-block {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+    }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .site-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .ml-blue {
+      color: #1E90FF;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background-color: #333;
+      border-radius: 1px;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .search-container {
+      padding: 10px 15px;
+      text-align: center;
+    }
+
+    .search-container input[type="text"] {
+      width: 250px;
+      padding: 8px 15px;
+      font-size: 14px;
+      border: 1.5px solid black;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    .category-section {
+      margin: 20px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      border:1px solid black;
+    }
+
+    .category-header {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .category-card {
+      display: block;
+      width: 90%;
+      max-width: 200px;
+      text-decoration: none;
+      background-color: #fff;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      padding: 16px 10px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: normal;
+      -webkit-text-stroke: 0.5px black;
+      color: #000;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .category-card:hover {
+      transform: scale(1.03);
+      background-color: #f3f3f3;
+    }
+
+    footer {
+      background-color: #f2f2f2;
+      padding: 30px 20px 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    footer .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    footer .footer-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    footer .footer-logo span {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    footer .footer-copy {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-container">
+    <div class="moving-text">SELAMAT DATANG!</div>
+  </div>
+
+  <div class="header-block">
+    <div class="header">
+      <div class="left-section">
+        <div class="logo">
+          <img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo">
+        </div>
+        <div class="site-title">Schwanz <span class="ml-blue">ML</span></div>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Cari kategori..." />
+    </div>
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="category.html">Category</a>
+    <a href="social.html">Social</a>
+  </div>
+
+  <div class="category-section">
+    <div class="category-header">Category</div>
+    <div class="category-list">
+      <a href="collector.html" class="category-card" data-ready="false" onclick="checkCategory(this)">Collector</a>
+      <a href="legend.html" class="category-card" data-ready="true" onclick="checkCategory(this)">Legend</a>
+      <a href="allstar.html" class="category-card" data-ready="true" onclick="checkCategory(this)">AllStar</a>
+      <a href="starlight.html" class="category-card" data-ready="true" onclick="checkCategory(this)">Starlight</a>
+      <a href="elite.html" class="category-card" data-ready="false" onclick="checkCategory(this)">Elite</a>
+      <a href="special.html" class="category-card" data-ready="false" onclick="checkCategory(this)">Special</a>
+      <a href="venom.html" class="category-card" data-ready="false" onclick="checkCategory(this)">Venom</a>
+      <a href="msc.html" class="category-card" data-ready="true" onclick="checkCategory(this)">MSC</a>
+      <a href="anime-collab.html" class="category-card" data-ready="false" onclick="checkCategory(this)">Anime Collab</a>
+      <a href="kof.html" class="category-card" data-ready="true" onclick="checkCategory(this)">KOF</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo">
+      <span>Schwanz <span class="ml-blue">ML</span></span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="category.html">Category</a></div>
+      <div><a href="https://instagram.com/SchwanzML" target="_blank">Social</a></div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+      <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+      <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+      <div><a href="hayabusa-kakashi.html">Hayabua X Kakashi</a></div>
+      <div><a href="selena-zenith.html">Selena Zenith</a></div>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+      <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px; text-decoration: none; color: inherit;">
+        <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Saweria</span>
+      </a>
+      <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Tako ID</span>
+      </a>
+    </div>
+
+    <div class="footer-copy">
+      Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (!menu.classList.contains('show')) {
+        menu.style.display = 'block';
+        setTimeout(() => menu.classList.add('show'), 10);
+      } else {
+        menu.classList.remove('show');
+        setTimeout(() => menu.style.display = 'none', 300);
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+        if (menu.classList.contains('show')) {
+          menu.classList.remove('show');
+          setTimeout(() => menu.style.display = 'none', 300);
+        }
+      }
+    });
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function () {
+      const filter = this.value.toLowerCase();
+      const categories = document.querySelectorAll(".category-card");
+      categories.forEach(function (cat) {
+        if (cat.textContent.toLowerCase().includes(filter)) {
+          cat.style.display = "";
+        } else {
+          cat.style.display = "none";
+        }
+      });
+    });
+
+    function checkCategory(el) {
+      const ready = el.getAttribute("data-ready");
+      if (ready === "false") {
+        alert("Kategori ini belum tersedia. Silakan cek nanti lagi.");
+        event.preventDefault();
+      }
+    }
+  </script>
+</body>
+</html>

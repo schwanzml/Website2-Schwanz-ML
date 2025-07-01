@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Hero - Schwanz ML</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+    }
+    .banner-container {
+      background-color: #1E90FF;
+      height: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .moving-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      top: 10px;
+      left: 0;
+      animation: slide 12s linear infinite alternate;
+    }
+    @keyframes slide {
+      0% { left: 0; }
+      100% { left: calc(100% - 20px); }
+    }
+    .header-block {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .site-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .ml-blue {
+      color: #1E90FF;
+    }
+    .hamburger {
+      width: 25px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background-color: #333;
+    }
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+    }
+    .menu a:hover {
+      background: #f0f0f0;
+    }
+    .left-section {
+      display: flex;
+      align-items: center;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: #fff;
+    }
+    .search-box {
+      position: relative;
+    }
+    .search-box input[type="text"] {
+      width: 250px;
+      padding: 8px 35px 8px 15px;
+      font-size: 14px;
+      border: 1.5px solid black;
+      border-radius: 25px;
+      outline: none;
+    }
+    .search-box button {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: black;
+    }
+    .skin-section {
+      background-color: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border:1px solid black;
+    }
+.skin-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.skin-card {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+  width: 140px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-bottom: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.skin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skin-card img {
+  width: 100%;
+  display: block;
+}
+    .loading-popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(30, 144, 255, 0.9);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 13px;
+      display: none;
+      z-index: 10;
+      animation: fadeIn 0.2s ease;
+    }
+    .skin-card.clicked .loading-popup {
+      display: block;
+    }
+    .skin-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.skin-card a:visited {
+  color: inherit;
+}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
+    .pagination {
+      display: block;
+      margin-top: 30px;
+      font-size: 16px;
+      user-select: none;
+    }
+    .pagination span {
+      padding: 6px 10px;
+      background-color: #eaeaea;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .pagination span.active {
+      background-color: #1E90FF;
+      color: white;
+      font-weight: bold;
+    }
+    footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 30px 20px 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+footer .footer-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+footer .footer-logo span {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+footer .footer-copy {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+  </style>
+</head>
+<body onload="initMenu()">
+
+<div class="banner-container"><div class="moving-text">SELAMAT DATANG!</div></div>
+
+<div class="header-block">
+  <div class="header">
+    <div class="left-section">
+      <div class="logo"><img src="https://i.imgur.com/2yaf2wb.png" alt="Logo"></div>
+      <div class="site-title">Schwanz <span class="ml-blue">ML</span></div>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="search disini..." onkeypress="handleKeyPress(event)" />
+      <button onclick="handleSearch()">🔍</button>
+    </div>
+  </div>
+</div>
+
+<div class="menu" id="menu">
+  <a href="index.html">Home</a>
+  <a href="category.html">Category</a>
+  <a href="social.html">Social</a>
+</div>
+
+<div class="skin-section">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <div style="font-weight: bold; font-size: 16px;">Semua Hero</div>
+    <div><a href="index.html" style="text-decoration: none; color: gray; font-weight: bold;">&lt;&lt;&lt;&lt;&lt;</a></div>
+  </div>
+  <div class="skin-list" id="skinList"></div>
+  <div id="noResult" style="display:none; text-align:center; color:#888; font-size:15px; margin-top:20px;">
+    Tidak ada hasil ditemukan.
+  </div>
+  
+  <div class="pagination" id="pagination">
+  </div>
+</div>
+<footer>
+    <div class="footer-logo">
+      <img src="https://i.imgur.com/2yaf2wb.png" alt="Logo">
+      <span>Schwanz <span class="ml-blue">ML</span></span>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="category.html">Category</a></div>
+      <div><a href="https://youtu.be/dQw4w9WgXcQ?si=-ioxpiJ4S2o21HjU">Diamond Gratis</a></div>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+      <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+      <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+      <div><a href="hayabusa-kakashi.html">Hayabua X Kakashi</a></div>
+      <div><a href="selena-zenith.html">Selena Zenith</a></div>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+      <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Saweria</span>
+      </a>
+      <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Tako ID</span>
+      </a>
+    </div>
+    <div class="footer-copy">Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.</div>
+  </footer>
+<script src="skins-data.js"></script>
+<script>
+function parseTanggalIndo(tanggal) {
+  const bulanMap = { 'Januari': 0, 'Februari': 1, 'Maret': 2, 'April': 3, 'Mei': 4, 'Juni': 5, 'Juli': 6, 'Agustus': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Desember': 11 };
+  const [tgl, bulan, tahun] = tanggal.split(' ');
+  return new Date(tahun, bulanMap[bulan], parseInt(tgl));
+}
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  if (!menu.classList.contains('show')) {
+    // Masuk
+    menu.style.display = 'block';
+    setTimeout(() => menu.classList.add('show'), 10);
+  } else {
+    // Keluar
+    menu.classList.remove('show');
+    setTimeout(() => menu.style.display = 'none', 300);
+  }
+}
+// Tutup menu kalau klik di luar menu/hamburger
+document.addEventListener('click', function(event) {
+  const menu = document.getElementById('menu');
+  const hamburger = document.querySelector('.hamburger');
+  
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+    if (menu.classList.contains('show')) {
+      menu.classList.remove('show');
+      setTimeout(() => menu.style.display = 'none', 300);
+    }
+  }
+});
+
+function renderSkins(filter = '', page = 1) {
+  const list = document.getElementById('skinList');
+  const noResult = document.getElementById('noResult');
+  list.innerHTML = '';
+  filteredSkins = skins.filter(skin => skin.name.toLowerCase().includes(filter));
+  const startIndex = (page - 1) * perPage;
+  const pageSkins = filteredSkins.slice(startIndex, startIndex + perPage);
+
+  if (pageSkins.length === 0) {
+    noResult.style.display = 'block';
+  } else {
+    noResult.style.display = 'none';
+    pageSkins.forEach((skin) => {
+      const div = document.createElement('div');
+      div.className = 'skin-card';
+      div.innerHTML = `
+        <a href="#" onclick="handleClick('${skin.link}', this.parentNode); return false;">
+          <img src="${skin.img}" alt="${skin.name}" />
+          <div style="font-size: 12px; color: #666; margin-top: 6px;">${skin.date}</div>
+          <div style="color: black; font-weight: 400;">${skin.name}</div>
+        </a>
+        <div class="loading-popup">Tunggu sebentar ya...</div>
+      `;
+      list.appendChild(div);
+    });
+  }
+}
+
+function renderPagination() {
+  const pagination = document.getElementById('pagination');
+  const totalPages = Math.ceil(filteredSkins.length / perPage);
+  pagination.innerHTML = '';
+
+  const goToPage = (page) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', page);
+    window.location.href = url.toString();
+  };
+
+  const buttonRow = document.createElement('div');
+  buttonRow.style.display = 'flex';
+  buttonRow.style.justifyContent = 'center';
+  buttonRow.style.flexWrap = 'wrap';
+  buttonRow.style.gap = '6px';
+  buttonRow.style.marginBottom = '10px';
+
+  // Tombol ⏮️
+  const first = document.createElement('span');
+  first.textContent = '⏮️';
+  if (currentPage === 1) {
+    first.style.opacity = 0.4;
+    first.style.cursor = 'not-allowed';
+  } else {
+    first.onclick = () => goToPage(1);
+  }
+  buttonRow.appendChild(first);
+
+  // Tombol ◀️
+  const prev = document.createElement('span');
+  prev.textContent = '◀️';
+  if (currentPage === 1) {
+    prev.style.opacity = 0.4;
+    prev.style.cursor = 'not-allowed';
+  } else {
+    prev.onclick = () => goToPage(currentPage - 1);
+  }
+  buttonRow.appendChild(prev);
+
+  // Tombol Angka
+  for (let i = 1; i <= totalPages; i++) {
+    const span = document.createElement('span');
+    span.textContent = i;
+    if (i === currentPage) span.classList.add('active');
+    span.onclick = () => goToPage(i);
+    buttonRow.appendChild(span);
+  }
+
+  // Tombol ▶️
+  const next = document.createElement('span');
+  next.textContent = '▶️';
+  if (currentPage === totalPages) {
+    next.style.opacity = 0.4;
+    next.style.cursor = 'not-allowed';
+  } else {
+    next.onclick = () => goToPage(currentPage + 1);
+  }
+  buttonRow.appendChild(next);
+
+  // Tombol ⏭️
+  const last = document.createElement('span');
+  last.textContent = '⏭️';
+  if (currentPage === totalPages) {
+    last.style.opacity = 0.4;
+    last.style.cursor = 'not-allowed';
+  } else {
+    last.onclick = () => goToPage(totalPages);
+  }
+  buttonRow.appendChild(last);
+
+  // Append tombol baris atas
+  pagination.appendChild(buttonRow);
+
+  // Form pencarian halaman manual
+  const inputRow = document.createElement('div');
+  inputRow.style.display = 'flex';
+  inputRow.style.justifyContent = 'center';
+  inputRow.style.alignItems = 'center';
+  inputRow.style.gap = '8px';
+  inputRow.style.marginTop = '15px';
+
+  const pageInput = document.createElement('input');
+  pageInput.type = 'number';
+  pageInput.min = 1;
+  pageInput.max = totalPages;
+  pageInput.placeholder = 'Cari halaman...';
+  pageInput.style.padding = '4px 8px';
+  pageInput.style.width = '100px';
+  pageInput.style.border = '1px solid #ccc';
+  pageInput.style.borderRadius = '4px';
+
+  const goBtn = document.createElement('button');
+  goBtn.textContent = '➜';
+  goBtn.style.padding = '4px 8px';
+  goBtn.style.border = 'none';
+  goBtn.style.backgroundColor = '#1E90FF';
+  goBtn.style.color = 'white';
+  goBtn.style.borderRadius = '4px';
+  goBtn.style.cursor = 'pointer';
+
+  goBtn.onclick = () => {
+    const pageVal = parseInt(pageInput.value);
+    if (!isNaN(pageVal) && pageVal >= 1 && pageVal <= totalPages) {
+      goToPage(pageVal);
+    } else {
+      alert('Halaman tidak valid!');
+    }
+  };
+pageInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') goBtn.onclick();
+});
+  inputRow.appendChild(pageInput);
+  inputRow.appendChild(goBtn);
+  pagination.appendChild(inputRow);
+}
+
+function handleSearch() {
+  const input = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  // Redirect ke halaman tertentu jika cocok dengan nama hero
+  if (input === 'chou') {
+    window.location.href = 'hero-chou.html';
+    return;
+  }
+  if (input === 'chou saint') {
+    window.location.href = 'hero-chou.html';
+    return;
+  }
+
+  renderSkins(input, 1);
+  renderPagination();
+}
+function handleKeyPress(e) {
+  if (e.key === 'Enter') handleSearch();
+}
+function handleClick(link, el) {
+  if (el) el.classList.add('clicked');
+  setTimeout(() => window.location.href = link, 800);
+}
+const urlParams = new URLSearchParams(window.location.search);
+let currentPage = parseInt(urlParams.get('page')) || 1;
+const perPage = 10;
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Apakah variable 'skins' ada?", typeof skins !== 'undefined' ? skins : "skins belum tersedia");
+  skins.sort((a, b) => parseTanggalIndo(b.date) - parseTanggalIndo(a.date));
+  filteredSkins = [...skins];
+  renderSkins('', currentPage);
+  renderPagination();
+});
+// Tambahkan toggleMenu ke hamburger jika belum
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+});
+function initMenu() {
+  const hamburger = document.querySelector('.hamburger');
+  if (hamburger) {
+    hamburger.onclick = function () {
+      toggleMenu();
+    };
+  }
+}
+</script>
+
+</body>
+</html>
