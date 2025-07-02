@@ -329,9 +329,8 @@ footer .footer-copy {
 <script src="skins-data.js"></script>
 <script>
 function parseTanggalIndo(tanggal) {
-  const bulanMap = { 'Januari': 0, 'Februari': 1, 'Maret': 2, 'April': 3, 'Mei': 4, 'Juni': 5, 'Juli': 6, 'Agustus': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Desember': 11 };
-  const [tgl, bulan, tahun] = tanggal.split(' ');
-  return new Date(tahun, bulanMap[bulan], parseInt(tgl));
+  const [tgl, bulan, tahun] = tanggal.split('-').map(Number);
+  return new Date(tahun, bulan - 1, tgl);
 }
 function toggleMenu() {
   const menu = document.getElementById('menu');
