@@ -52,13 +52,13 @@ const skins = [
     img: 'https://i.ibb.co/PzvgTbft/Silvanna-Meowkin-Warden.jpg',
     name: 'Silvanna Fatcat',
     date: '29-5-2025',
-    link: '#'
+    link: 'skin-detail.html?hero=silvanna-fatcat'
   },
   {
     img: 'https://i.ibb.co/YF0PcP1F/Lukas-Naruto-Uzumaki.jpg',
     name: 'Lukas X Naruto',
     date: '04-5-2025',
-    link: '#'
+    link: 'skin-detail.html?hero=lukas-naruto'
   },
     {
     img: 'https://i.ibb.co/fz503WJf/Chou-Iori-Yagami.jpg',
@@ -94,20 +94,20 @@ const skins = [
     {
     img: 'https://i.ibb.co/W4RGgvPt/Ling-Neobeast-Ling.jpg',
     name: 'Ling Neobeast',
-    date: '2-5-2025',
-    link: '#'
+    date: '02-5-2025',
+    link: 'skin-detail.html?hero=ling-neobeast'
   },
   {
     img: 'https://i.ibb.co/MkZyNTLC/Suyou-Sasuke-Uchiha.jpg',
     name: 'Suyou X Sasuke',
     date: '28-4-2025',
-    link: '#'
+    link: 'skin-detail.html?hero=suyou-sasuke'
   },
     {
     img: 'https://i.ibb.co/4nX94sBQ/Kimmy-First-Order-Jet-Trooper.jpg',
     name: 'Kimmy Starwars',
     date: '25-4-2025',
-    link: '#'
+    link: 'skin-detail.html?hero=kimmy-starwars'
   },
       {
     img: 'https://i.ibb.co/93C2GN3X/Yi-Sun-shin-Lone-Destructor.jpg',
