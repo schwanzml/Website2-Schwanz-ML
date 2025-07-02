@@ -2,127 +2,123 @@ const skins = [
   {
     img: 'https://i.ibb.co/Fb5bZFPY/Chou-Libra-Shiryu.jpg',
     name: 'Chou Saint Seiya',
-    date: '26 Juni 2025',
+    date: '26-6-2025',
     link: 'chou-saint-seiya.html'
   },
   {
     img: 'https://i.ibb.co/35d4fF98/20250625-073352.jpg',
     name: 'Alucard Luckybox',
-    date: '25 Juni 2025',
-    link: 'alucard-luckybox.html'
+    date: '26-6-2025',
+    link: 'skin-detail.html?hero=alucard-luckybox'
   },
   {
-    img: 'https://i.imgur.com/Jt1FGEb.jpg',
+    img: 'https://i.ibb.co/VW5tDKKb/Natan-Archon-of-Knowledge.jpg',
     name: 'Natan MSC',
-    date: '21 Juni 2025',
-    link: '#'
+    date: '21-6-2025',
+    link: 'skin-detail.html?hero=natan-msc'
   },
   {
-    img: 'https://i.imgur.com/OK3LHgG.jpg',
+    
+    img: 'https://i.ibb.co/GrZdFFq/Luo-Yi-Starborne-Matron.jpg',
     name: 'Luo Yi Create',
-    date: '21 Juni 2025',
-    link: '#'
+    date: '21-6-2025',
+    link: 'skin-detail.html?hero=luo-yi-create'
   },
   {
-    img: 'https://i.imgur.com/gQOa9hN.jpg',
+    img: 'https://i.ibb.co/m5QdjHSf/Lesley-Meowkin-Hunter.jpg',
     name: 'Lesley Fatcat',
-    date: '20 Juni 2025',
-    link: '#'
+    date: '20-6-2025',
+    link: 'skin-detail.html?hero=lesley-fatcat'
   },
   {
-    img: 'https://i.imgur.com/vcLt3iv.jpg',
+    img: 'https://i.ibb.co/SD38J6M3/Julian-Meowkin-Tracker.jpg',
     name: 'Julian Fatcat',
-    date: '19 Juni 2025',
-    link: '#'
+    date: '19-6-2025',
+    link: 'skin-detail.html?hero=julian-fatcat'
   },
   {
-    img: 'https://i.imgur.com/wQoxjHk.jpg',
+    img: 'https://i.ibb.co/4RJ6rB6N/20250702-132213.jpg',
     name: 'Arlott Collector',
-    date: '07 Juni 2025',
-    link: '#'
+    date: '07-6-2025',
+    link: 'skin-detail.html?hero=arlott-collector'
   },
   {
-    img: 'https://i.imgur.com/RN9yOHG.jpg',
+    img: 'https://i.ibb.co/0jCdJ2bB/Jawhead-Proto-Guardian.jpg',
     name: 'Jawhead Allstar',
-    date: '30 Mei 2025',
-    link: '#'
+    date: '30-5-2025',
+    link: 'skin-detail.html?hero=jawhead-allstar'
   },
   {
-    img: 'https://i.imgur.com/9TQ8kNZ.jpg',
+    img: 'https://i.ibb.co/PzvgTbft/Silvanna-Meowkin-Warden.jpg',
     name: 'Silvanna Fatcat',
-    date: '29 Mei 2025',
+    date: '29-5-2025',
     link: '#'
   },
   {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/YF0PcP1F/Lukas-Naruto-Uzumaki.jpg',
     name: 'Lukas X Naruto',
-    date: '04 Mei 2025',
+    date: '04-5-2025',
     link: '#'
   },
     {
-    img: 'https://i.imgur.com/9TQ8kNZ.jpg',
+    img: 'https://i.ibb.co/fz503WJf/Chou-Iori-Yagami.jpg',
     name: 'Chou Kof',
-    date: '29 Juni 2025',
+    date: '29-6-2025',
     link: '#'
   },
   {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/zV9vNGV3/Chou-ECHO.jpg',
     name: 'Chou Echo',
-    date: '29 Juni 2025',
+    date: '29-6-2025',
     link: '#'
   },
     {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/sJjgRmN0/Chou-S-T-U-N-Chou.jpg',
     name: 'Chou Stun',
-    date: '29 Juni 2025',
+    date: '29-6-2025',
     link: '#'
   },
       {
-    img: 'https://i.imgur.com/9TQ8kNZ.jpg',
+    img: 'https://i.ibb.co/ycnVVZjt/Alucard-Obi-Wan-Kenobi.jpg',
     name: 'Alucard Starwars',
-    date: '29 Juni 2025',
+    date: '29-6-2025',
     link: '#'
   },
   {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/mF9Y2ftd/Alucard-Obsidian-Blade.jpg',
     name: 'Alucard Legend',
-    date: '29 Juni 2025',
+    date: '29-6-2025',
     link: '#'
   },
+    
     {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
-    name: 'Lukas X Naruto',
-    date: '04 Mei 2025',
-    link: '#'
-  },
-    {
-    img: 'https://i.imgur.com/9TQ8kNZ.jpg',
+    img: 'https://i.ibb.co/W4RGgvPt/Ling-Neobeast-Ling.jpg',
     name: 'Ling Neobeast',
-    date: '2 Mei 2025',
+    date: '2-5-2025',
     link: '#'
   },
   {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/MkZyNTLC/Suyou-Sasuke-Uchiha.jpg',
     name: 'Suyou X Sasuke',
-    date: '28 April 2025',
+    date: '28-4-2025',
     link: '#'
   },
     {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/4nX94sBQ/Kimmy-First-Order-Jet-Trooper.jpg',
     name: 'Kimmy Starwars',
-    date: '25 April 2025',
+    date: '25-4-2025',
     link: '#'
   },
       {
-    img: 'https://i.imgur.com/9TQ8kNZ.jpg',
+    img: 'https://i.ibb.co/93C2GN3X/Yi-Sun-shin-Lone-Destructor.jpg',
     name: 'Yss Collector',
-    date: '24 April 2025',
+    date: '24-4-2025',
     link: '#'
   },
   {
-    img: 'https://i.imgur.com/2opxDoH.jpg',
+    img: 'https://i.ibb.co/vxKwVgFw/Vale-Gaara.jpg',
     name: 'Vale X Gaara',
-    date: '12 April 2025',
+    date: '12-4-2025',
     link: '#'
   },
 
