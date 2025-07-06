@@ -177,5 +177,12 @@ const skins = [
     link: 'skin-detail.html?hero=valir-saint-seiya',
     category: "saint-seiya"
   },
+   {
+    img: 'https://i.ibb.co/4ZWRJq0n/Badang-Sagittarius-Seiya.jpg',
+    name: 'Badang Saint Seiya',
+    date: '06-07-2025',
+    link: 'skin-detail.html?hero=badang-saint-seiya',
+    category: "saint-seiya"
+  },
   
 ];
