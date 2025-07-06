@@ -172,7 +172,7 @@ const skins = [
   },
    {
     img: 'https://i.ibb.co/9kzv7VHz/Valir-Leo-Ikki.jpg',
-    name: 'Valie Saint Seiya',
+    name: 'Valir Saint Seiya',
     date: '05-07-2025',
     link: 'skin-detail.html?hero=valir-saint-seiya',
     category: "saint-seiya"
