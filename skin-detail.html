@@ -124,9 +124,9 @@
         <span></span><span></span><span></span>
       </div>
     </div>
-    <div class="search-container">
-      🔍 searching skin di halaman home.
-    </div>
+   <div class="search-container" style="text-align: center; padding: 10px;">
+  <input type="text" id="searchInput" placeholder="🔍 Cari skin disini..." style="width: 220px; padding: 6px 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 20px;">
+</div>
     <div class="menu" id="menu">
       <a href="index.html">Home</a>
       <a href="category.html">Category</a>
@@ -135,6 +135,7 @@
   </div>
 
   <div id="skin-content" style="max-width: 1500px; margin: 0 auto; padding: 20px;"></div>
+<div id="search-results" style="max-width: 1500px; margin: 0 auto; padding: 20px;"></div>
 
    <footer>
     <div class="footer-logo">
@@ -328,6 +329,13 @@ const skinData = {
     replaces: ["Default", "Basic","Special", "Starlight","Dragon Tamer", "Collector","Legend", "Phoenix Ikki","Elite", "KOF",],
     downloads: ["https://sfl.gl/qepOo", "https://sfl.gl/JwxZE","https://sfl.gl/D8dXz", "https://sfl.gl/rm175M","https://sfl.gl/Twu0pjuW", "https://sfl.gl/hDSV2","https://sfl.gl/Cx0rAzR", "https://sfl.gl/nvEIWN","https://sfl.gl/2hkyBdy", "https://sfl.gl/WCXt",]
   },
+  "badang-saint-seiya": {
+    name: "Badang Saint Seiya",
+    date: "06-07-2025",
+    shortStory: "Born in the Vonetis Islands off the southern part of the mainland. Originally just an ordinary villager, after defeating the water monster that was harassing the village, he gained huge power from the water monster. After that, Badang set out to the mountains of the southern Moniyan Empire where the Abyss was entrenched, hoping to completely solve the problem of the water source being contaminated by the Abyss.",
+    replaces: ["Default", "Basic","Special", "Zodiac","Collector", "Pegasus Seiya"],
+    downloads: ["https://sfl.gl/NSOl", "https://sfl.gl/pJ3S","https://sfl.gl/bOiAHN", "https://sfl.gl/HoeAFt","https://sfl.gl/kHpvAJa", "https://sfl.gl/nwVjZuE",]
+  },
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -432,6 +440,51 @@ if (!skinData[hero]) {
 
   container.innerHTML = blockHTML + tableHTML;
 }
+</script>
+
+<script>
+function handleSearch(keyword) {
+  const resultsContainer = document.getElementById("search-results");
+  const searchTerm = keyword.trim().toLowerCase();
+
+  if (searchTerm.length === 0) {
+    resultsContainer.innerHTML = "";
+    return;
+  }
+
+  let html = "";
+  for (const key in skinData) {
+    const skin = skinData[key];
+    if (skin.name.toLowerCase().includes(searchTerm)) {
+      html += `
+        <div style="border:1px solid #ccc; border-radius:10px; margin:15px auto; max-width:600px; padding:15px;">
+          <div style="font-weight:bold; font-size:16px; color:#1E90FF;">${skin.name}</div>
+          <div style="font-size:14px; margin-top:5px;">Tanggal rilis: ${skin.date}</div>
+          <div style="margin-top:10px;">
+            <a href="skin-detail.html?hero=${key}" class="download-btn">🔍 Lihat Detail</a>
+          </div>
+        </div>`;
+    }
+  }
+
+  resultsContainer.innerHTML = html || `<div style="text-align:center; color:red;">Tidak ditemukan.</div>`;
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        const keyword = searchInput.value.trim();
+        if (keyword.length > 0) {
+          window.location.href = `index.html?search=${encodeURIComponent(keyword)}`;
+        }
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
