@@ -191,5 +191,12 @@ const skins = [
     link: 'skin-detail.html?hero=badang-collector',
     category: "collector"
   },
+   {
+    img: 'https://i.ibb.co/zVJsqBD3/Pharsa-Empress-Phoenix.jpg',
+    name: 'Pharsa Collector',
+    date: "06-07-2025 21:00",
+    link: 'skin-detail.html?hero=pharsa-collector',
+    category: "collector"
+  },
   
 ];
