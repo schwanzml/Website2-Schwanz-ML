@@ -146,14 +146,14 @@ const skins = [
     img: 'https://i.ibb.co/C5m20D8T/Zhask-Bone-Flamen.jpg',
     name: 'Zhask Luckybox',
     date: '12-04-2025',
-    link: 'skin-detail.html?hero=suyou-sasuke',
+    link: 'skin-detail.html?hero=zhask-luckybox',
     category: "luckybox"
   },
     {
     img: 'https://i.ibb.co/LDDpTJ8R/Hanzo-Soulfire-Netherlord.jpg',
     name: 'Hanzo Collector',
     date: '11-04-2025',
-    link: 'skin-detail.html?hero=kimmy-starwars',
+    link: 'skin-detail.html?hero=hanzo-collector',
     category: "collector"
   },
       {
