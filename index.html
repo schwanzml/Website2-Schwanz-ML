@@ -289,7 +289,7 @@ footer .footer-copy {
   </div>  <div class="skin-section">
     <div class="skin-header">
       <div class="left-title" id="searchTitle">Hero Terbaru</div>
-      <div class="right-link"><a href="allhero.html">Lihat Semua</a></div>
+      <div class="right-link" id="lihatSemua"><a href="allhero.html">Lihat Semua</a></div>
     </div>
     <div class="skin-list" id="skinList"></div>
     <div id="noResult" style="display: none; text-align: center; margin-top: 20px; font-weight: bold; color: red;">Tidak ada hasil ditemukan.</div>
@@ -380,6 +380,14 @@ footer .footer-copy {
     if (filter === '') {
       title.innerText = 'Hero Terbaru';
       renderSkins();
+// Ambil parameter ?search= dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      document.getElementById("searchInput").value = searchParam;
+      document.getElementById("searchTitle").innerText = 'Hasil untuk: ' + searchParam;
+      renderSkins(searchParam.toLowerCase());
+    }
    
    
     
@@ -407,6 +415,14 @@ skins.sort((a, b) => parseTanggalIndo(b.date) - parseTanggalIndo(a.date));
     }
 
     renderSkins();
+// Ambil parameter ?search= dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      document.getElementById("searchInput").value = searchParam;
+      document.getElementById("searchTitle").innerText = 'Hasil untuk: ' + searchParam;
+      renderSkins(searchParam.toLowerCase());
+    }
     
     document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");
@@ -423,6 +439,23 @@ skins.sort((a, b) => parseTanggalIndo(b.date) - parseTanggalIndo(a.date));
   });
 });
   </script>
-  
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const searchTitle = document.getElementById("searchTitle");
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchParam = urlParams.get("search");
+
+  if (searchParam) {
+    searchInput.value = searchParam;
+    searchTitle.innerText = 'Hasil untuk: ' + searchParam;
+    renderSkins(searchParam.toLowerCase());
+
+    // ✅ Sembunyikan tombol "Lihat Semua"
+    const lihat = document.getElementById("lihatSemua");
+    if (lihat) lihat.style.display = "none";
+  }
+});
+</script>
   </body>
 </html>
