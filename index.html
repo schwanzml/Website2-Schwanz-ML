@@ -457,5 +457,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+<script>
+window.addEventListener("pageshow", function (event) {
+  // Hapus semua class .clicked dari skin-card
+  const cards = document.querySelectorAll(".skin-card.clicked");
+  cards.forEach(card => {
+    card.classList.remove("clicked");
+  });
+
+  // Sembunyikan popup loading
+  const loadingText = document.getElementById('loadingText');
+  if (loadingText) loadingText.style.display = "none";
+});
+</script>
   </body>
 </html>
