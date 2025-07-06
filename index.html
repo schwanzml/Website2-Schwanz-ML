@@ -1,0 +1,476 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schwanz ML</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }.banner-container {
+  width: 100%;
+  background-color: #1E90FF;
+  overflow: hidden;
+  height: 40px;
+  position: relative;
+}
+
+.moving-text {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  top: 10px;
+  left: 0;
+  animation: slide 12s linear infinite alternate;
+}
+
+@keyframes slide {
+  0% { left: 0; }
+  100% { left: calc(100% - 20px); }
+}
+
+.header-block {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.ml-blue {
+  color: #1E90FF;
+}
+
+.hamburger {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background-color: #333;
+  border-radius: 1px;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.menu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.menu a:last-child {
+  border-bottom: none;
+}
+
+.menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.search-container {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.search-container input[type="text"] {
+  width: 250px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: 1.5px solid black;
+  border-radius: 25px;
+  outline: none;
+}
+
+.skin-section {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border:1px solid black;
+}
+
+.skin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.skin-header .left-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.skin-header .right-link {
+  font-size: 14px;
+  color: #1E90FF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.skin-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.skin-card {
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding-bottom: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.skin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skin-card img {
+  width: 100%;
+  display: block;
+}
+
+.skin-card.clicked {
+  transform: scale(0.95);
+  opacity: 0.6;
+  transition: all 0.15s ease;
+}
+
+.loading-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 144, 255, 0.9);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  display: none;
+  z-index: 10;
+  animation: fadeIn 0.2s ease;
+}
+
+.skin-card.clicked .loading-popup {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 30px 20px 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+footer .footer-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+footer .footer-logo span {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+footer .footer-copy {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <div class="moving-text">SELAMAT DATANG!</div>
+  </div>  <div class="header-block">
+    <div class="header">
+      <div class="left-section">
+        <div class="logo">
+          <img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo">
+        </div>
+        <div class="site-title">Schwanz <span class="ml-blue">ML</span></div>
+      </div>
+     <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span><span></span><span></span>
+      </div>
+    </div><div class="search-container">
+  <input type="text" id="searchInput" placeholder="search disini..." />
+</div>
+
+  </div>  <div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="category.html">Category</a>
+    <a href="social.html">Social</a>
+  </div>  <div class="skin-section">
+    <div class="skin-header">
+      <div class="left-title" id="searchTitle">Hero Terbaru</div>
+      <div class="right-link" id="lihatSemua"><a href="allhero.html">Lihat Semua</a></div>
+    </div>
+    <div class="skin-list" id="skinList"></div>
+    <div id="noResult" style="display: none; text-align: center; margin-top: 20px; font-weight: bold; color: red;">Tidak ada hasil ditemukan.</div>
+  </div> 
+  <footer>
+    <div class="footer-logo">
+      <img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo">
+      <span>Schwanz <span class="ml-blue">ML</span></span>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="category.html">Category</a></div>
+      <div><a href="https://youtu.be/dQw4w9WgXcQ?si=-ioxpiJ4S2o21HjU">Diamond Gratis</a></div>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+      <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+      <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+      <div><a href="hayabusa-kakashi.html">Hayabua X Kakashi</a></div>
+      <div><a href="selena-zenith.html">Selena Zenith</a></div>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+      <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Saweria</span>
+      </a>
+      <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Tako ID</span>
+      </a>
+    </div>
+    <div class="footer-copy">Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.</div>
+  </footer>  
+  <div id="loadingText" style="display: none; text-align: center; font-size: 18px; font-weight: bold; color: #1E90FF; margin-top: 20px;">Tunggu sebentar ya...</div> 
+  <script src="skins-data.js"></script>  <script>
+    function toggleMenu(hamburger) {
+  const menu = document.getElementById('menu');
+  if (!hamburger.classList.contains('active')) {
+    hamburger.classList.add('active');
+    menu.style.display = 'block';
+    setTimeout(() => menu.classList.add('show'), 10);
+  } else {
+    hamburger.classList.remove('active');
+    menu.classList.remove('show');
+    setTimeout(() => menu.style.display = 'none', 300);
+  }
+}
+
+    
+
+    const skinList = document.getElementById('skinList');
+
+    function renderSkins(filter = '') {
+      skinList.innerHTML = '';
+      const noResult = document.getElementById('noResult');
+      let shown = 0;
+      let found = false;
+
+      skins.forEach(skin => {
+        if (filter && !skin.name.toLowerCase().includes(filter)) return;
+        if (!filter && shown >= 10) return;
+
+        found = true;
+        const div = document.createElement('div');
+        div.className = 'skin-card';
+       div.innerHTML = `
+  <a href="#" onclick="handleClick('${skin.link}', this.parentNode); return false;" style="text-decoration: none; color: inherit;">
+    <img src="${skin.img}" alt="${skin.name}">
+    <div style="font-size: 12px; color: #666; margin-top: 6px;">${skin.date.split(" ")[0]}</div>
+    <div>${skin.name}</div>
+  </a>
+  <div class="loading-popup">Tunggu sebentar ya...</div>
+`;
+        skinList.appendChild(div);
+        shown++;
+      });
+
+      noResult.style.display = found ? 'none' : 'block';
+    }
+
+    document.getElementById("searchInput").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const filter = this.value.trim().toLowerCase();
+    const title = document.getElementById("searchTitle");
+
+    if (filter === '') {
+      title.innerText = 'Hero Terbaru';
+      renderSkins();
+// Ambil parameter ?search= dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      document.getElementById("searchInput").value = searchParam;
+      document.getElementById("searchTitle").innerText = 'Hasil untuk: ' + searchParam;
+      renderSkins(searchParam.toLowerCase());
+    }
+   
+   
+    
+    } else {
+      title.innerText = 'Hasil untuk: ' + filter;
+      renderSkins(filter);
+    }
+  }
+});
+
+   function parseTanggalIndo(tanggal) {
+  const [tglJam, jamStr] = tanggal.split(' ');
+  const [tgl, bulan, tahun] = tglJam.split('-').map(Number);
+  const [jam = 0, menit = 0] = (jamStr || '').split(':').map(Number);
+  return new Date(tahun, bulan - 1, tgl, jam, menit);
+}
+
+skins.sort((a, b) => parseTanggalIndo(b.date) - parseTanggalIndo(a.date));
+
+    function handleClick(link, el) {
+      const loadingText = document.getElementById('loadingText');
+      loadingText.style.display = 'block';
+      if (el) el.classList.add('clicked');
+      setTimeout(() => {
+        window.location.href = link;
+      }, 800);
+    }
+
+    renderSkins();
+// Ambil parameter ?search= dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      document.getElementById("searchInput").value = searchParam;
+      document.getElementById("searchTitle").innerText = 'Hasil untuk: ' + searchParam;
+      renderSkins(searchParam.toLowerCase());
+    }
+    
+    document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.getElementById("menu");
+
+  document.addEventListener("click", function (event) {
+    if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+      if (menu.classList.contains("show")) {
+        menu.classList.remove("show");
+        hamburger.classList.remove("active");
+        setTimeout(() => (menu.style.display = "none"), 300);
+      }
+    }
+  });
+});
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  const searchTitle = document.getElementById("searchTitle");
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchParam = urlParams.get("search");
+
+  if (searchParam) {
+    searchInput.value = searchParam;
+    searchTitle.innerText = 'Hasil untuk: ' + searchParam;
+    renderSkins(searchParam.toLowerCase());
+
+    // ✅ Sembunyikan tombol "Lihat Semua"
+    const lihat = document.getElementById("lihatSemua");
+    if (lihat) lihat.style.display = "none";
+  }
+});
+</script>
+<script>
+window.addEventListener("pageshow", function (event) {
+  // Hapus semua class .clicked dari skin-card
+  const cards = document.querySelectorAll(".skin-card.clicked");
+  cards.forEach(card => {
+    card.classList.remove("clicked");
+  });
+
+  // Sembunyikan popup loading
+  const loadingText = document.getElementById('loadingText');
+  if (loadingText) loadingText.style.display = "none";
+});
+</script>
+  </body>
+</html>
