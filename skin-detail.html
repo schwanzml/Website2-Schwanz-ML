@@ -336,6 +336,13 @@ const skinData = {
     replaces: ["Default", "Basic","Special", "Zodiac","Collector", "Pegasus Seiya"],
     downloads: ["https://sfl.gl/NSOl", "https://sfl.gl/pJ3S","https://sfl.gl/bOiAHN", "https://sfl.gl/HoeAFt","https://sfl.gl/kHpvAJa", "https://sfl.gl/nwVjZuE",]
   },
+  "badang-collector": {
+    name: "Badang Collector",
+    date: "06-07-2025",
+    shortStory: "Born in the Vonetis Islands off the southern part of the mainland. Originally just an ordinary villager, after defeating the water monster that was harassing the village, he gained huge power from the water monster. After that, Badang set out to the mountains of the southern Moniyan Empire where the Abyss was entrenched, hoping to completely solve the problem of the water source being contaminated by the Abyss.",
+    replaces: ["Default", "Basic","Special", "Zodiac","Pegasus Seiya", "Sagittarius Seiya"],
+    downloads: ["https://sfl.gl/Ec8q", "https://sfl.gl/OdpJH","https://sfl.gl/XxsyKWH", "https://sfl.gl/oO76K","https://sfl.gl/HCjOWufc", "https://sfl.gl/x8HfNYA",]
+  },
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -472,18 +479,17 @@ function handleSearch(keyword) {
 
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput");
-  if (searchInput) {
-    searchInput.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        const keyword = searchInput.value.trim();
-        if (keyword.length > 0) {
-          window.location.href = `index.html?search=${encodeURIComponent(keyword)}`;
-        }
-      }
-    });
+window.addEventListener("pageshow", function () {
+  // Blur elemen aktif (hilangkan fokus tombol yang bikin biru)
+  if (document.activeElement) {
+    document.activeElement.blur();
   }
+
+  // Paksa reset background body
+  document.body.style.backgroundColor = "white";
+
+  // Scroll ke atas (jika perlu reset posisi)
+  window.scrollTo(0, 0);
 });
 </script>
 </body>
