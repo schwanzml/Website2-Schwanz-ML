@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skin Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+  html, body {
+  overflow-x: hidden;
+}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+    }
+    @keyframes slide { 0% { left: -100%; } 100% { left: 100%; } }
+    .banner-container {
+      width: 100%; background-color: #1E90FF; height: 40px;
+      position: relative; overflow: hidden;
+    }
+    .footer-brand {
+  font-weight: bold;
+  font-size: 18px;
+}
+.ml-blue {
+  color: #1E90FF;
+}
+    .moving-text {
+      position: absolute; white-space: nowrap;
+      font-size: 18px; font-weight: bold; color: white;
+      top: 10px; left: 0;
+      animation: slide 12s linear infinite alternate;
+    }
+    .header {
+      background-color: #fff; border-bottom: 1px solid #ddd;
+      padding: 10px 15px 5px; display: flex; flex-direction: column;
+      position: relative; z-index: 100;
+    }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .logo img {
+      width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+    }
+    .title {
+      font-weight: bold; font-size: 18px; margin-left: 10px;
+    }
+    .hamburger {
+      width: 25px; height: 18px; display: flex; flex-direction: column;
+      justify-content: space-between; cursor: pointer; z-index: 200;
+    }
+    .hamburger span {
+      display: block; height: 3px; background-color: #333;
+      border-radius: 2px; transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .menu {
+      display: none; position: absolute; top: 100%; right: 15px;
+      background: white; border: 1px solid #ddd;
+      border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      opacity: 0; transform: translateY(-10px); transition: all 0.3s ease;
+      z-index: 99;
+    }
+    .menu.show {
+      display: block; opacity: 1; transform: translateY(0);
+    }
+    .menu a {
+      display: block; padding: 10px 15px;
+      color: #333; text-decoration: none;
+    }
+    .menu a:hover { background-color: #f0f0f0; }
+    .search-container {
+      text-align: center; padding: 10px 0 5px;
+      font-style: italic; color: red;
+    }
+    .download-btn {
+      border: 1.5px solid #1E90FF; color: #1E90FF;
+      padding: 6px 18px; border-radius: 25px; font-weight: 500;
+      text-decoration: none; background-color: white;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background-color: #1E90FF; color: white;
+    }
+    footer {
+      background-color: white; padding: 30px 20px 10px;
+      font-size: 14px; color: #333;
+    }
+    footer a { color: black !important; text-decoration: none; }
+    .footer-logo {
+      display: flex; align-items: center; margin-bottom: 25px;
+    }
+    .footer-logo img {
+      width: 40px; height: 40px; border-radius: 50%;
+      object-fit: cover; margin-right: 10px;
+    }
+    .footer-copy {
+      margin-top: 30px; border-top: 1px solid #ccc;
+      padding-top: 15px; text-align: center;
+      font-size: 13px; color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <div class="moving-text">SELAMAT DATANG!</div>
+  </div>
+  <div class="header">
+    <div class="header-top">
+      <div style="display: flex; align-items: center;">
+        <div class="logo"><img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo"></div>
+        <div class="title">Schwanz <span style="color:#1E90FF">ML</span></div>
+      </div>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+   <div class="search-container" style="text-align: center; padding: 10px;">
+  <input type="text" id="searchInput" placeholder="🔍 Cari skin disini..." style="width: 220px; padding: 6px 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 20px;">
+</div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="category.html">Category</a>
+      <a href="social.html">Social</a>
+    </div>
+  </div>
+
+  <div id="skin-content" style="max-width: 1500px; margin: 0 auto; padding: 20px;"></div>
+<div id="search-results" style="max-width: 1500px; margin: 0 auto; padding: 20px;"></div>
+
+   <footer>
+    <div class="footer-logo">
+  <img src="https://i.ibb.co/wh9T2kXn/9d6f6dededf9c55cd966730d4d45d364.jpg" alt="Logo">
+  <span class="footer-brand">Schwanz <span class="ml-blue">ML</span></span>
+</div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Quick Link</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="category.html">Category</a></div>
+      <div><a href="https://youtu.be/dQw4w9WgXcQ?si=-ioxpiJ4S2o21HjU">Diamond Gratis</a></div>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Populer</div>
+      <div><a href="chou-saint-seiya.html">Chou - Saint Seiya</a></div>
+      <div><a href="lukas-naruto.html">Lukas X Naruto</a></div>
+      <div><a href="hayabusa-kakashi.html">Hayabua X Kakashi</a></div>
+      <div><a href="selena-zenith.html">Selena Zenith</a></div>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Support</div>
+      <a href="https://saweria.co/SchwanzSigma" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/V0DWfw0J/download-fotor-bg-remover-20250626155455.png" alt="Saweria" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Saweria</span>
+      </a>
+      <a href="https://tako.id/SchwanzML" target="_blank" style="display: flex; align-items: center; margin-bottom: 5px;">
+        <img src="https://i.ibb.co/zW2pnWxH/login-removebg-preview.png" alt="Tako ID" style="width: 30px; height: 30px; margin-right: 8px;">
+        <span>Tako ID</span>
+      </a>
+    </div>
+    <div class="footer-copy">Copyright: ©2025 <strong>Schwanz ML</strong> · Moonton · All rights reserved.</div>
+  </footer>
+
+<script>
+function toggleMenu(hamburger) {
+  const menu = document.getElementById('menu');
+  hamburger.classList.toggle('active');
+  if (!menu.classList.contains('show')) {
+    menu.style.display = 'block';
+    setTimeout(() => menu.classList.add('show'), 10);
+  } else {
+    menu.classList.remove('show');
+    hamburger.classList.remove('active');
+    setTimeout(() => menu.style.display = 'none', 300);
+  }
+}
+document.addEventListener('click', function (event) {
+  const menu = document.getElementById('menu');
+  const hamburger = document.querySelector('.hamburger');
+  if (!hamburger.contains(event.target) && !menu.contains(event.target)) {
+    if (menu.classList.contains('show')) {
+      menu.classList.remove('show');
+      hamburger.classList.remove('active');
+      setTimeout(() => menu.style.display = 'none', 300);
+    }
+  }
+});
+
+const skinData = {
+  "natan-msc": {
+    name: "Natan MSC",
+    date: "21-06-2025",
+    shortStory: "A thousand years after falling into a deep slumber, the Lord of the Abyss and the Lord of Light awoke, and so the Endless War raged once more. Natan stood as Eruditio's leader, guiding the people in their search for hope in this world. Yet having faced numerous defeats he decided instead to cast his gaze not to the future, but to the past by inventing a time machine. As the world teetered on the brink of destruction, his time machine finally reached completion as it absorbed the combined power of the Twilight Orbs: Natan stepped within, and started searching the past for a chance to save the world.",
+    replaces: ["Default", "Basic", "Elite", "Starlight", "Special", "Collector"],
+    downloads: ["https://sfl.gl/3TjFwjoz", "https://sfl.gl/Z8D8", "https://sfl.gl/V56V", "https://sfl.gl/T63b", "https://sfl.gl/6XNWlYSZ", "https://sfl.gl/uYHoy","https://sfl.gl/CBk4Rvdb"]
+  },
+  
+  "alucard-luckybox": {
+    name: "Alucard Luckybox",
+    date: "26-6-2025",
+    shortStory: "Alucard's father was a comrade-in-arms of Tigreal who disappeared in a battle with the Demons. Therefore, he hated darkness, joined the Monastery of Light, and swore to destory all Demons. But later he learned the hidden secrets of this battle, so he left the Monastery of Light in anger and fought the darkness in his own way.",
+    replaces: ["Default", "Basic", "Seasom", "Starlight", "Valentine", "Legend", "Empire Agent", "Lightborn", "Starwars","Special",],
+    downloads: ["https://sfl.gl/S4Lhd", "https://sfl.gl/Ypjfad", "https://sfl.gl/Vw7cu6x", "https://sfl.gl/ikby", "https://sfl.gl/1BYCRr5o", "#", "https://sfl.gl/ZuwJm7", "https://sfl.gl/edlET0", "#","https://sfl.gl/X1B0"]
+  },
+  "luo-yi-create": {
+    name: "Luo Yi Create",
+    date: "21-06-2025",
+    shortStory: "Harmonizing Yin and Yang was not just her talent but also her vision for the world. She became the successor of the Grand Sorceress of Zhu'an when she was just a child after accidentally following a spirit to the Cliff of Endless Lights. There, she witnessed a vision of a utopia in the ancient past when the Ancient Ones lived among the pure energies of Yin and Yang. It was then that she discovered her true identity as a descendant of the ancient Cadians.",
+    replaces: ["Default", "Basic", "Elite", "Lunarfest", "Starlight", "Collector", "Epic",],
+    downloads: ["https://sfl.gl/QXcaCl", "https://sfl.gl/q6rPOA", "https://sfl.gl/cMjhy2", "https://sfl.gl/5AY3r7", "https://sfl.gl/it3gVj", "https://sfl.gl/Qppti", "https://sfl.gl/468PH"]
+  },
+   "julian-fatcat": {
+    name: "Jualian Fatcat",
+    date: "19-06-2025",
+    shortStory: "Julian was the son of Terizla, the leader of the Free Smiths' Guild. The guild was exterminated by the Church of Light on charges of heresy when Julian was at an early age. The poor child was then adopted by the archbishop, trained and molded to be an elite member of the Ravens, a secret force that listened only to the archbishop's orders. Later, on his mission to purify Xavier, he caught a glimpse of the secret buried in time...",
+    replaces: ["Default", "Basic", "JJK", "HXH"],
+    downloads: ["https://sfl.gl/tBxn", "https://sfl.gl/AdiRQUFK", "https://sfl.gl/2UcFSWp", "#"]
+   },
+  "lesley-fatcat": {
+    name: "Lesley Fatcat",
+    date: "20-06-2025",
+    shortStory: "After the death of her father, she was adopted by House Vance and became Harley's sister. Lesley regarded her younger brother as everything to her, and kept protecting Harley secretly.",
+    replaces: ["Default", "Basic", "Special", "Epic", "Valentine", "Legend", "Starlight","Collector", "Annual Starlight", "Aspirant", "Convenant",],
+    downloads: ["https://sfl.gl/qsJaI4K", "https://sfl.gl/g8haWqGj", "https://sfl.gl/rdDIE", "#", "https://sfl.gl/TIF9N", "https://sfl.gl/yPRMtc", "https://sfl.gl/UeGvM", "https://sfl.gl/SlCMEv", "https://sfl.gl/y1FVB", "#", "https://sfl.gl/vvvZEnr"]
+  },
+  "arlott-collector": {
+    name: "Arlott Collector",
+    date: "07-06-2025",
+    shortStory: "Ostracized for this half-demon and half-human lineage, the young Arlott joined the Demons in the Barren Lands but was betrayed by his demonic brethren during battle. However, after he was gravely wounded, he was saved by a human girl named Mila. During their time together, Mila's innocence and sincerity gradually changed his view on humans. This was not to last, however, as the Church of Light executed Mila for heresy. Arlott slaughtered every living soul in the Church before he laid Mila's body to rest in the lakeside forest.",
+    replaces: ["Default", "Basic", "Starlight",],
+    downloads: ["https://sfl.gl/zLQLL", "https://sfl.gl/H64DvUV", "https://sfl.gl/TBLP"]
+  },
+  "jawhead-allstar": {
+    name: "Jawhead Allstar",
+    date: "30-05-2025",
+    shortStory: "This intelligent robot developed by Henry and his wife is armed with weapons and strong defensive capabilities, and can also act as a housekeeper. It is responsible for protecting the couple's daughter little Ailee after their disappearance.",
+    replaces: ["Default", "Basic", "MSC","Elite", "Special", "Collector","Starlight", "MPL", "S33",],
+    downloads: ["https://sfl.gl/pN3wslWE", "https://sfl.gl/dUwDmq", "https://sfl.gl/gbho","https://sfl.gl/w5yVOkw", "https://sfl.gl/J9aVcG", "https://sfl.gl/GGr8","https://sfl.gl/pv86JV", "https://sfl.gl/lfNq", "https://sfl.gl/WNWm"]
+  },
+  "silvanna-fatcat": {
+    name: "Silvanna Fatcat",
+    date: "29-05-2025",
+    shortStory: "The princess of the Moniyan Empire. After her younger brother disappeared, she took up the burden of the country and joined the Empire Chevaliers, becoming the best female knight of the Empire Chevaliers.",
+    replaces: ["Default", "Basic", "Midnight Justice","Starlight", "Elite CS", "Verdant Lencer","Special",],
+    downloads: ["https://sfl.gl/BO4F", "https://sfl.gl/w6tMEz", "https://sfl.gl/wVGP","https://sfl.gl/0ka4", "https://sfl.gl/k5CAi", "https://sfl.gl/th9aLNBT","https://sfl.gl/EWwg"]
+  },
+  "lukas-naruto": {
+    name: "Lukas Naruto",
+    date: "04-05-2025",
+    shortStory: "Lukas is a recently revived from inside the Imperial Sanctuary. Endowed with a special bloodline that allows him to take human form, he was once befriended by Emperor Gaius and fought alongside him to create the glorious Moniyan Empire. After a millennium-long slumber, he was awakened by Silvanna and vowed to herald a new era for the Empire at her side. Beneath his brazen and rambunctious appearance lies a pure and earnest heart. For Lukas, fighting is not only his duty but the instinctive expression of his spirit. He firmly believes he will create something as brilliant as the dawning sun to illuminate every corner of the Moniyan Empire and rewrite the legend of the Beast of Light.",
+    replaces: ["Default", "Basic",],
+    downloads: ["https://sfl.gl/9fOv0o5A", "https://sfl.gl/iUEqKC"]
+  },
+  "ling-neobeast": {
+    name: "Ling Neobeast",
+    date: "02-05-2025",
+    shortStory: "Ling once belonged to the Finch Sect, a mysterious and feared order of assassins from the Cadia Riverlands. During a mission, he nearly lost his life but was saved by the Vermilion Bird; it was an encounter that would kindle his yearning for freedom. In a bargain to leave the Finch Sect, he undertook one last mission to infiltrate the Dragon Altar.",
+    replaces: ["Default", "Basic", "Starlight","Dragon Tamer","Special"],
+    downloads: ["https://sfl.gl/q7P44GoN", "https://sfl.gl/CASD6t", "https://sfl.gl/49rdc","https://sfl.gl/72m8", "https://sfl.gl/49RkaP9e"]
+  },
+  "suyou-sasuke": {
+    name: "Suyou Sasuke",
+    date: "28-04-2025",
+    shortStory: "As the last descendant of the Exorcists of Nuo, Suyou carried the power of the immortal deity within his body, using it to guide the people toward enlightenment. He walked the mortal plane, like a wandering swordsman, charming and uninhibited, but never forgetting that the of Nuo comes from the faith of the people. And so, he went about purging evil from the hearts of men and safeguarding their hopes for the future.",
+    replaces: ["Default", "Basic"],
+    downloads: ["https://sfl.gl/Xq3VV", "https://sfl.gl/bqX46OQ"]
+  },
+  "kimmy-starwars": {
+    name: "Kimmy Starwars",
+    date: "25-04-2025",
+    shortStory: "Born into a traditional military family in the Moniyan Empire, she received military education from an early age, so she was a little boyish. At the same time, Kimmy is not bound by tradition. She is obsessed with technology and inventions In order to prove herself to her father, Kimmy picks up her invention and joined the Imperial Expeditionary Army.",
+    replaces: ["Default", "Basic", "Starlight","Luckybox","Special","Dragon Tamer","Special - Rising Nova","Elite"],
+    downloads: ["https://sfl.gl/wb8nGE5", "https://sfl.gl/V37jno", "https://sfl.gl/lpPT57","https://sfl.gl/D7UzVVI", "https://sfl.gl/OILR4B", "https://sfl.gl/cFPHJ","https://sfl.gl/GgSx3", "https://sfl.gl/2JAi"]
+  },
+  "yss-collector": {
+    name: "Yss Collector",
+    date: "24-04-2025",
+    shortStory: "Yi Sun-shin is the leader of the City of the Dragon fleet and he is dedicated to his duties. But the ruler of the City of the Dragon believes the false accusations and demoted Yi Sun-shin to a commoner. The fleet, without a leader, was hit hard by pirates. At this moment of crisis, Yi Sun-shin stepped forward and lead the reformed fleet to defend this area of the sea and successfully defeated the strong pirates with remaining naval force.",
+    replaces: ["Default", "Basic", "Elite - Ranger","Elite - Agent","Starlight","Epic","Season"],
+    downloads: ["https://sfl.gl/dzs0o4IU", "https://sfl.gl/aKDOr6", "https://sfl.gl/oAaitwsG","https://sfl.gl/wJ1nPc", "https://sfl.gl/nvku","https://sfl.gl/YGZ0g", "https://sfl.gl/rwJpk"]
+  },
+  "vale-gaara": {
+    name: "Vale Gaara",
+    date: "12-04-2025",
+    shortStory: "A magician of Wind Fort and the only genius in the entire family who can change the form of wind magic at will. Once a close friend of Valir of Fire Throat. After the changes in the Land of Fire and Valir left his hometown, Vale has always adhered to the agreement he made with him, waiting for his return.",
+    replaces: ["Default", "Basic", "Dawning","Starlight","Elite","Collector","Epic","Annual Starlight"],
+    downloads: ["https://sfl.gl/b9p2", "https://sfl.gl/urliKU", "https://sfl.gl/uEHjt5g","https://sfl.gl/2dXt", "https://sfl.gl/VpGs","https://sfl.gl/uWWQvA", "https://sfl.gl/4A6NfO", "https://sfl.gl/ViGKmVHW"]
+  },
+  "zhask-luckybox": {
+    name: "Zhask Luckybox",
+    date: "12-04-2025",
+    shortStory: "Zhask expanded his swarm as he pleased in the universe, disrupting its balance in the process. Yve pursued him, but Zhask was able to escape every time. When he shuffled to the Land of Dawn and attempted to destroy it, he was hit hard by the resistance of Aurora Aurora and Tobias, so he hibernated in Kastiya to recuperate. But at this time, Yve also arrived, so a dual was imminent.",
+    replaces: ["Default", "Basic"],
+    downloads: ["https://sfl.gl/WwM3", "https://sfl.gl/kzTHWsNO"]
+  },
+  "hanzo-collector": {
+    name: "Hanzo Collector",
+    date: "11-04-2025",
+    shortStory: "A genius ninja of the Shadow Sect in the Scarlet Shadow. In order to pursue great power, he absorbed the Hanekage into his body, and used the enemy's flesh and blood to provide nourishment for the Hanekage. After gaining power, he took away the most powerful supreme ninjutsu and Ame no Habakiri in the Scarlet Shadow, and went further and further on the road of killing.",
+    replaces: ["Default", "Basic","Elite", "Special"],
+    downloads: ["https://sfl.gl/PY7DNls1", "https://sfl.gl/ro0d6","https://sfl.gl/330PnBlv", "https://sfl.gl/axIff"]
+  },
+  "hayabusa-kakashi": {
+    name: "Hayabusa Kakashi",
+    date: "11-04-2025",
+    shortStory: "As the second heir to the Shadow Sect of the Scarlet Shadow, Hayabusa had always looked up to his brother, a figure who he saw as the moon itself. To preserve the delicate balance of power between the Shadow and Scarlet Sects, Hayabusa willingly took his brother's place to be a political pawn and hostage, to be raised within the rival Scarlet Sect. Every day spent in the Scarlet Sect, Hayabusa lived by his brother's principles. He mastered his unique Shadow Shuriken technique and forged an unbreakable bond with Hanabi, a kunoichi of the Scarlet Sect. But when Hanzo's betrayal and his brother's disappearance shattered their hopes for peace, Hayabusa realized that the moonlight that had always guided him was gone. Yet, he gripped his blade firmly, determined to forge ahead through the shadows, following his brother's nindo.",
+    replaces: ["Default", "Basic","Elite", "Summer","Starlight", "Topup",],
+    downloads: ["https://sfl.gl/pgqvQ", "https://sfl.gl/cDzkhQ6","https://sfl.gl/YLwQ", "https://sfl.gl/OkY6gX","https://sfl.gl/18hdk", "https://sfl.gl/qEoh"]
+  },
+  "kalea-sakura": {
+    name: "Kalea Sakura",
+    date: "11-04-2025",
+    shortStory: "The descendant of the legendary Great Serpent, Kalea once had trouble accepting her human-like body. But after discovering who she was, she learned to fight with her fists and powerful serpent tail while healing allies with the power of the Great Serpent surging inside her. Always full of energy, she is the proud protector of the Vonetis Sea. However, when faced with gratitude from others, she tends to put on a facade of arrogance to hide her shyness–after all, she has to live up to her reputation as the descendant of the Great Serpent!",
+    replaces: ["Default", "Basic"],
+    downloads: ["https://sfl.gl/1u6OIyH", "https://sfl.gl/1u6OIyH",]
+  },
+  "valir-saint-seiya": {
+    name: "Valir Saint Seiya",
+    date: "05-07-2025",
+    shortStory: "In his hometown of Agelta, he showed an amazing talent for arcane energy manipulation when he first arrived at the Magic Academy, so he was valued by his mentor Gord. But Gord got very angry when he discovered that he had incorporated the spells of his hometown into the arcane, thinking that he had defiled the arcane. After a battle between the master and the disciple, Valir left the Magic Academy.",
+    replaces: ["Default", "Basic","Special", "Starlight","Dragon Tamer", "Collector","Legend", "Phoenix Ikki","Elite", "KOF",],
+    downloads: ["https://sfl.gl/qepOo", "https://sfl.gl/JwxZE","https://sfl.gl/D8dXz", "https://sfl.gl/rm175M","https://sfl.gl/Twu0pjuW", "https://sfl.gl/hDSV2","https://sfl.gl/Cx0rAzR", "https://sfl.gl/nvEIWN","https://sfl.gl/2hkyBdy", "https://sfl.gl/WCXt",]
+  },
+  "badang-saint-seiya": {
+    name: "Badang Saint Seiya",
+    date: "06-07-2025",
+    shortStory: "Born in the Vonetis Islands off the southern part of the mainland. Originally just an ordinary villager, after defeating the water monster that was harassing the village, he gained huge power from the water monster. After that, Badang set out to the mountains of the southern Moniyan Empire where the Abyss was entrenched, hoping to completely solve the problem of the water source being contaminated by the Abyss.",
+    replaces: ["Default", "Basic","Special", "Zodiac","Collector", "Pegasus Seiya"],
+    downloads: ["https://sfl.gl/NSOl", "https://sfl.gl/pJ3S","https://sfl.gl/bOiAHN", "https://sfl.gl/HoeAFt","https://sfl.gl/kHpvAJa", "https://sfl.gl/nwVjZuE",]
+  },
+  "badang-collector": {
+    name: "Badang Collector",
+    date: "06-07-2025",
+    shortStory: "Born in the Vonetis Islands off the southern part of the mainland. Originally just an ordinary villager, after defeating the water monster that was harassing the village, he gained huge power from the water monster. After that, Badang set out to the mountains of the southern Moniyan Empire where the Abyss was entrenched, hoping to completely solve the problem of the water source being contaminated by the Abyss.",
+    replaces: ["Default", "Basic","Special", "Zodiac","Pegasus Seiya", "Sagittarius Seiya"],
+    downloads: ["https://sfl.gl/Ec8q", "https://sfl.gl/OdpJH","https://sfl.gl/XxsyKWH", "https://sfl.gl/oO76K","https://sfl.gl/HCjOWufc", "https://sfl.gl/x8HfNYA",]
+  },
+  "pharsa-collector": {
+    name: "Pharsa Collector",
+    date: "06-07-2025",
+    shortStory: "As princess of the Crow Clan of Askati Forest, she was born with mutated blood. The mutation could gain her amazing abilities if she is awakened. When Alice invaded Askati Forest, the awakened Pharsa drove Alice away and lost her eyesight. After that, her lover turned himself into a crow to replace her eyes.",
+    replaces: ["Default", "Basic","Elite", "Indigo","Season", "Special","Starlight", "MSC","Epic", "Neobeast"],
+    downloads: ["https://sfl.gl/9PY02hp", "https://sfl.gl/wr0w","https://sfl.gl/VTFIdF", "https://sfl.gl/bn8m3","https://sfl.gl/9T8zlI", "https://sfl.gl/mS1e","https://sfl.gl/KbF0", "https://sfl.gl/3KBixqlF","https://sfl.gl/uUKR6Oy","https://sfl.gl/VziSIr",]
+  },
+};
+
+const urlParams = new URLSearchParams(window.location.search);
+const hero = urlParams.get('hero');
+const container = document.getElementById("skin-content");
+
+if (!skinData[hero]) {
+  container.innerHTML = `<div style="padding:20px; color:red; font-weight:bold;">Skin belum tersedia.</div>`;
+} else {
+  const data = skinData[hero];
+
+  const blockHTML = `
+    <div style="max-width: 700px; margin: 20px auto; border: 1px solid #000; padding: 20px; text-align: center; border-radius: 10px;">
+      <div style="font-weight: bold; font-size: 18px;">${data.name}</div>
+      <div style="color: #000; font-size: 14px;">(download disini)</div>
+      <div style="margin-top: 10px; border-bottom: 1px solid #000; display: inline-block; font-weight: bold;">Short Story</div>
+      <div style="margin-top: 10px; font-size: 14px; line-height: 1.6;">${data.shortStory}</div>
+      <div style="margin-top: 20px; text-align: center; font-style: italic; color: red;">Video preview ada di YouTube.</div>
+    </div>
+    <!-- Featured, Support Voice & Kelebihan Lainnya -->
+<div style="margin-top: 30px; padding: 0 15px;">
+  <!-- Judul Featured di Tengah -->
+  <div style="text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 15px;">
+    Featured
+  </div>
+
+  <div style="max-width: 1000px; margin: 30px auto; padding: 0 20px;">
+  <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+    
+    <!-- Support Voice -->
+    <div style="flex: 1 1 45%; font-size: 11px;">
+      <div style="font-weight: bold; margin-bottom: 5px;">Support Voice</div>
+      <ul style="list-style-type: disc; padding-left: 18px; margin-top: 5px;">
+        <li>Indonesia</li>
+        <li>English</li>
+        <li>English PH</li>
+        <li>Japan</li>
+        <li>Arabic</li>
+        <li>Espanol</li>
+        <li>Portuguse</li>
+        <li>Rusia</li>
+        <li>Turkie</li>
+      </ul>
+    </div>
+
+    <!-- Kelebihan Lainnya -->
+    <div style="flex: 1 1 45%; font-size: 11px;">
+      <div style="font-weight: bold; margin-bottom: 5px;">Kelebihan Lainnya</div>
+      <ul style="list-style-type: disc; padding-left: 18px; margin-top: 5px;">
+        <li>Support grafik low</li>
+        <li>Head Icon</li>
+        <li>Skill Icon</li>
+        <li>Share Background</li>
+        <li>File sudah dikompres</li>
+        <li>Audio Replay</li>
+        <li>Work Classic & Rank</li>
+        <li>No Bug</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <!-- Peringatan -->
+  <div style="border: 1px solid red; color: red; font-style: italic; padding: 8px 12px; margin: 20px; border-radius: 8px; font-size: 13px;">
+  Jika ada kerusakan/bug seperti tidak ada suara, tidak ada efek skill dan lain lain, silahkan lapor ke admin <a href="https://youtu.be/KsB99Sf_fX0?si=RGSGpbYvZ2q3P0Ch" target="_blank" style="text-decoration: underline; color: red;">disini</a>.
+</div>
+
+  <!-- Judul Tabel & Tanggal -->
+  <div style="text-align: center; font-weight: 600; font-size: 18px; margin-bottom: 5px;">
+    Tabel List ${data.name}
+  </div>
+ <div style="text-align: center; font-size: 13px; color: #555; margin-bottom: 25px;">
+  Last Updated <u>${data.date}</u>
+</div>
+</div>
+  `;
+
+  const tableHTML = `
+    <div style="overflow-x: auto; margin-top: 30px;">
+      <table style="width: 100%; max-width: 800px; margin: 0 auto; border-collapse: collapse; font-size: 15px;">
+        <thead>
+          <tr style="background-color: #f2f2f2;">
+            <th style="text-align: left; padding: 14px 20px;">Replace</th>
+            <th style="text-align: center; padding: 14px 20px;">Download</th>
+          </tr>
+        </thead>
+        <tbody>
+         ${data.replaces.map((name, i) => `
+  <tr style="border-bottom: 1px solid #eee;">
+    <td style="padding: 16px 20px;">${name}</td>
+    <td style="text-align: center;">
+      <a href="${data.downloads[i] || '#'}" target="_blank" class="download-btn">✔ Download</a>
+    </td>
+  </tr>
+`).join("")}
+        </tbody>
+      </table>
+    </div>
+    <div style="margin: 15px; font-size: 12px; font-style: italic; color: #333;">🗣️ Pilih sesuai kebutuhan.<br>❌ Jika download malah balik ke halaman, berarti file belum tersedia.</div>
+  `;
+
+  container.innerHTML = blockHTML + tableHTML;
+}
+</script>
+
+<script>
+function handleSearch(keyword) {
+  const resultsContainer = document.getElementById("search-results");
+  const searchTerm = keyword.trim().toLowerCase();
+
+  if (searchTerm.length === 0) {
+    resultsContainer.innerHTML = "";
+    return;
+  }
+
+  let html = "";
+  for (const key in skinData) {
+    const skin = skinData[key];
+    if (skin.name.toLowerCase().includes(searchTerm)) {
+      html += `
+        <div style="border:1px solid #ccc; border-radius:10px; margin:15px auto; max-width:600px; padding:15px;">
+          <div style="font-weight:bold; font-size:16px; color:#1E90FF;">${skin.name}</div>
+          <div style="font-size:14px; margin-top:5px;">Tanggal rilis: ${skin.date}</div>
+          <div style="margin-top:10px;">
+            <a href="skin-detail.html?hero=${key}" class="download-btn">🔍 Lihat Detail</a>
+          </div>
+        </div>`;
+    }
+  }
+
+  resultsContainer.innerHTML = html || `<div style="text-align:center; color:red;">Tidak ditemukan.</div>`;
+}
+
+</script>
+<script>
+window.addEventListener("pageshow", function () {
+  // Blur elemen aktif (hilangkan fokus tombol yang bikin biru)
+  if (document.activeElement) {
+    document.activeElement.blur();
+  }
+
+  // Paksa reset background body
+  document.body.style.backgroundColor = "white";
+
+  // Scroll ke atas (jika perlu reset posisi)
+  window.scrollTo(0, 0);
+});
+</script>
+</body>
+</html>
